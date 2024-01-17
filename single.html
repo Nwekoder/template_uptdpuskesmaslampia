@@ -31,7 +31,8 @@
 					<span class="font-bold text-lg leading-tight text-green-900">UPTD<br/>Puskesmas Lampia</span>
 				</div>
 
-				<ul class="flex items-center gap-2">
+				<!-- Desktop Menu -->
+				<ul class="lg:flex items-center gap-2 hidden">
 					<template x-for="menu in menus">
 						<li class="relative group flex items-center text-sm">
 							<a :href="menu.link || '#'" x-text="menu.name" class="px-3 py-1.5 transition-colors hover:text-primary"></a>
@@ -57,7 +58,38 @@
 					</template>
 				</ul>
 
-				<button class="hidden" type="button">menu</button>
+				<button @click="open = !open" class="lg:hidden text-2xl px-3 aspect-square outline-none" type="button">
+					<i class="bi bi-list"></i>
+				</button>
+
+				<!-- Mobile Menu -->
+				<ul class="lg:hidden fixed top-20 left-0 bg-neutral-100 w-full overflow-y-auto transition-[max-height,_height] duration-150" :class="open ? 'max-h-50vh' : 'max-h-0'">
+					<template x-for="menu in menus">
+						<li class="group text-sm">
+							<div class="flex items-center">
+								<a :href="menu.link || '#'" x-text="menu.name" class="px-4 py-3.5 transition-colors hover:text-primary"></a>
+	
+								<template x-if="menu.child && menu.child.length">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-2 h-2">
+										<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+									</svg>
+								</template>
+							</div>
+							
+							<template x-if="menu.child && menu.child.length">
+								<ul
+									class="flex flex-col bg-neutral-200 items-start text-left group-hover:max-h-40vh max-h-0 overflow-x-hidden overflow-y-auto duration-250 px-3"
+								>
+									<template x-for="child in menu.child">
+										<li class="w-full">
+											<a class="block w-full px-4 py-2 transition-colors hover:text-primary duration-200" :href="child.link" x-text="child.name"></a>
+										</li>
+									</template>
+								</ul>
+							</template>
+						</li>
+					</template>
+				</ul>
 			</div>
 		</nav>
 

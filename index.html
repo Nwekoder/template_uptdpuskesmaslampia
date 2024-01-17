@@ -31,7 +31,8 @@
 					<span class="font-bold text-lg leading-tight text-green-900">UPTD<br/>Puskesmas Lampia</span>
 				</div>
 
-				<ul class="flex items-center gap-2">
+				<!-- Desktop Menu -->
+				<ul class="lg:flex items-center gap-2 hidden">
 					<template x-for="menu in menus">
 						<li class="relative group flex items-center text-sm">
 							<a :href="menu.link || '#'" x-text="menu.name" class="px-3 py-1.5 transition-colors hover:text-primary"></a>
@@ -57,7 +58,38 @@
 					</template>
 				</ul>
 
-				<button class="hidden" type="button">menu</button>
+				<button @click="open = !open" class="lg:hidden text-2xl px-3 aspect-square outline-none" type="button">
+					<i class="bi bi-list"></i>
+				</button>
+
+				<!-- Mobile Menu -->
+				<ul class="lg:hidden fixed top-20 left-0 bg-neutral-100 w-full overflow-y-auto transition-[max-height,_height] duration-150" :class="open ? 'max-h-50vh' : 'max-h-0'">
+					<template x-for="menu in menus">
+						<li class="group text-sm">
+							<div class="flex items-center">
+								<a :href="menu.link || '#'" x-text="menu.name" class="px-4 py-3.5 transition-colors hover:text-primary"></a>
+	
+								<template x-if="menu.child && menu.child.length">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-2 h-2">
+										<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+									</svg>
+								</template>
+							</div>
+							
+							<template x-if="menu.child && menu.child.length">
+								<ul
+									class="flex flex-col bg-neutral-200 items-start text-left group-hover:max-h-40vh max-h-0 overflow-x-hidden overflow-y-auto duration-250 px-3"
+								>
+									<template x-for="child in menu.child">
+										<li class="w-full">
+											<a class="block w-full px-4 py-2 transition-colors hover:text-primary duration-200" :href="child.link" x-text="child.name"></a>
+										</li>
+									</template>
+								</ul>
+							</template>
+						</li>
+					</template>
+				</ul>
 			</div>
 		</nav>
 
@@ -69,29 +101,29 @@
 						:alt="`Background ${item.title}`"
 						class="absolute z-1 left-1/2 top-1/2 -translate-1/2 w-full h-full brightness-50 object-cover object-center"
 					/>
-					<p class="text-xl font-semibold absolute top-40% left-1/2 -translate-x-1/2 -translate-y-1/3 z-2" x-text="item.subtitle_top"></p>
-					<h1 class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-center z-2 w-5/6" x-text="item.title"></h1>
-					<p x-text="item.subtitle_bottom" class="absolute text-lg top-2/3 left-1/2 -translate-x-1/2 z-2 -translate-y-1/2"></p>
+					<p class="text-xl font-semibold absolute top-30% lg:top-40% lg:-translate-y-1/3 left-1/2 -translate-x-1/2 z-2" x-text="item.subtitle_top"></p>
+					<h1 class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-center z-2 w-11/12 lg:w-5/6" x-text="item.title"></h1>
+					<p x-text="item.subtitle_bottom" class="absolute text-lg top-70% text-center lg:top-2/3 lg:-translate-y-1/2 left-1/2 -translate-x-1/2 z-2"></p>
 				</div>
 			</template>
 		</header>
 
-		<section class="w-5/6 mx-auto mb-8">
-			<div class="grid grid-cols-3 gap-4">
-				<div class="w-full aspect-3/4 rounded-md bg-primary"></div>
+		<section class="w-11/12 text-center lg:text-left lg:w-5/6 mx-auto mb-8">
+			<div class="grid lg:grid-cols-3 gap-6 lg:gap-4">
+				<div class="w-full aspect-square rounded-md bg-primary"></div>
 
-				<div class="col-span-2">
+				<div class="lg:col-span-2">
 					<h2 class="text-4xl font-bold mb-4">Sekilas Tentang Kami</h2>
-					<p class="max-w-2xl leading-relaxed mb-4">
+					<p class=" text-justify max-w-md mx-auto lg:mx-0 lg:max-w-2xl leading-relaxed mb-4">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, quas? Eius, illo qui, doloribus assumenda dicta facere dolorum vero expedita nobis sed
 						aliquam reprehenderit sint, at animi sapiente commodi odit.
 					</p>
-					<p class="max-w-2xl leading-relaxed mb-4">
+					<p class=" text-justify max-w-md mx-auto lg:mx-0 lg:max-w-2xl leading-relaxed mb-4">
 						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis id animi quasi. Sapiente sunt quibusdam aperiam est iure molestias incidunt vel officiis
 						quam, quae vitae aliquam libero totam, mollitia facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente voluptates ratione ipsam.
 						Autem corrupti, quae illum et assumenda tempora. Natus, laborum! Omnis dignissimos expedita voluptatem accusamus amet error natus.
 					</p>
-					<p class="max-w-2xl leading-relaxed mb-4">
+					<p class=" text-justify max-w-md mx-auto lg:mx-0 lg:max-w-2xl leading-relaxed mb-4">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla ab quia placeat sit quas, repellendus corrupti soluta cupiditate autem cumque, minima
 						culpa facilis mollitia quos dolore dolor fuga illum!
 					</p>
@@ -123,32 +155,34 @@
 				})
 			</script>
 
-			<div class="w-5/6 mx-auto">
+			<div class="w-11/12 lg:w-5/6 mx-auto">
 				<h2 class="text-4xl font-bold mb-10 uppercase text-center">Pemerintah Kabupaten Luwu Timur</h2>
 
-				<div class="w-5/6 mx-auto grid grid-cols-4 gap-6">
+				<div class="w-5/6 mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
 					<template x-data="layananSection" x-for="i in layanan">
 						<div class="flex flex-col">
 							<div class="w-full aspect-square rounded-md mb-4 flex items-center justify-center">
 								<img :src="i.logo" :alt="`Logo ${i.name}`" class="w-2/3 object-contain aspect-square">
 							</div>
-							<h5 class="text-center font-lg font-semibold" x-text="i.name"></h5>
+							<h5 class="text-center font-xl font-semibold" x-text="i.name"></h5>
 						</div>
 					</template>
 				</div>
 			</div>
 		</section>
 
-		<section class="py-4 w-5/6 mx-auto">
-			<h2 class="text-4xl font-bold mb-10 uppercase text-left">Informasi Terkini</h2>
+		<section class="py-4 w-11/12 lg:w-5/6 mx-auto">
+			<h2 class="text-4xl font-bold mb-10 uppercase text-center lg:text-left">Informasi Terkini</h2>
 
-			<div class="grid grid-cols-3 gap-4 mb-12">
+			<div class="grid lg:grid-cols-3 gap-8 lg:gap-4 mb-12">
 				<template x-data="{artikel: ['Judul', 'Judul', 'Judul', 'Judul', 'Judul']}" x-for="i in artikel">
 					<div class="flex flex-col">
 						<div class="w-full aspect-video bg-primary rounded-md mb-2"></div>
 
 						<span class="text-sm text-neutral-400">Diupload oleh <strong>Admin</strong> pada <strong>15 menit yang lalu</strong></span>
-						<h5 class="text-2xl font-bold mb-4" x-text="i"></h5>
+						<a href="single.html" class="hover:underline">
+							<h5 class="text-2xl font-bold mb-4" x-text="i"></h5>
+						</a>
 						<p>
 							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa labore ipsam voluptatum quod repudiandae dolorem incidunt sit, aut vel officia, corrupti
 							dicta nisi dignissimos cumque odio eligendi ab esse assumenda.
@@ -161,11 +195,10 @@
 		</section>
 
 		<section class="mb-8 py-4 bg-neutral-100">
-
-			<div class="w-5/6 mx-auto">
+			<div class="w-11/12 lg:w-5/6 mx-auto">
 				<h2 class="text-4xl font-bold mb-10 uppercase text-center">Aplikasi Layanan Publik</h2>
 
-				<div class="w-4/5 mx-auto grid grid-cols-4 gap-8">
+				<div class="w-5/6 lg:w-4/5 mx-auto grid grid-cols-4 gap-8">
 					<template x-data="{layanan: ['Kementrian Kesehatan','Kementrian Kesehatan','Kementrian Kesehatan','Kementrian Kesehatan']}" x-for="i in layanan">
 						<div class="flex flex-col">
 							<div class="w-full aspect-square rounded-md mb-4"></div>
@@ -178,7 +211,7 @@
 
 		<!-- Footer -->
 		<div class="bg-neutral-600 text-white py-8 min-h-50vh">
-			<div class="w-5/6 mx-auto grid grid-cols-3 gap-4">
+			<div class="w-5/6 mx-auto grid lg:grid-cols-3 gap-4">
 				<section>
 					<h4 class="text-3xl font-bold mb-4">UPTD Puskesmas Lampia</h4>
 					<p class="leading-relaxed mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum pariatur, unde vero dolore est dolorum nihil voluptatibus, deleniti ipsa nostrum harum. Enim, eveniet voluptate? Ut architecto nemo dicta praesentium dolores.</p>
@@ -208,7 +241,7 @@
 			</div>
 		</div>
 		<footer class="bg-neutral-700 py-4 text-center text-white">
-			<span class="opacity-45">Designed by <strong>Codify_Fikhru</strong> & <strong>Nwekoder</strong>.</span>
+			<span class="opacity-45 lg:text-base text-xs">Designed by <strong>Codify_Fikhru</strong> & <strong>Nwekoder</strong>.</span>
 		</footer>
 
 		<script src="scripts/main.js"></script>
