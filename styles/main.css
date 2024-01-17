@@ -1,0 +1,21 @@
+[un-cloak] {
+	display: none;
+}
+
+.carousel .prev {
+	transition: 0.2s;
+	left: -100%;
+	z-index: -1;
+}
+
+.carousel .next {
+	transition: 0.2s;
+	left: 100%;
+	z-index: -1;
+}
+
+.carousel .current {
+	transition: 0.2s;
+	z-index: 0;
+	left: 0;
+}

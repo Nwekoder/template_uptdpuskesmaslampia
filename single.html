@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>UPTD Puskesmas Lampia</title>
+		<script src="dist/alpinejs/alpine.js" defer></script>
+		<script>
+			window.__unocss = {
+				theme: {
+					colors: {
+						primary: "#023FAF",
+						secondary: "#141414",
+						accent: "#C09256",
+					},
+				},
+			};
+		</script>
+		<script src="dist/unocss/unocss.js"></script>
+		<link rel="stylesheet" href="dist/unocss/unocss.css" />
+		<link rel="stylesheet" href="styles/main.css" />
+
+		<!-- Bootstrap Icons -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	</head>
+	<body un-cloak>
+		<nav class="bg-white fixed top-0 left-0 w-full h-20 flex items-center shadow-md z-1000" x-data="navbar">
+			<div class="w-11/12 mx-auto flex items-center justify-between">
+				<div class="flex gap-2 items-center">
+					<img src="images/logo-puskesmas.png" alt="Logo" class="h-14">
+					<span class="font-bold text-lg leading-tight text-green-900">UPTD<br/>Puskesmas Lampia</span>
+				</div>
+
+				<ul class="flex items-center gap-2">
+					<template x-for="menu in menus">
+						<li class="relative group flex items-center text-sm">
+							<a :href="menu.link || '#'" x-text="menu.name" class="px-3 py-1.5 transition-colors hover:text-primary"></a>
+
+							<template x-if="menu.child && menu.child.length">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-2 h-2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+								</svg>
+							</template>
+
+							<template x-if="menu.child && menu.child.length">
+								<ul
+									class="absolute flex flex-col -bottom-2 bg-neutral-100 translate-y-full items-start text-left right-0 w-52 group-hover:max-h-80vh max-h-0 overflow-x-hidden overflow-y-auto duration-250"
+								>
+									<template x-for="child in menu.child">
+										<li class="w-full">
+											<a class="block w-full px-4 py-2 transition-colors hover:text-primary duration-200" :href="child.link" x-text="child.name"></a>
+										</li>
+									</template>
+								</ul>
+							</template>
+						</li>
+					</template>
+				</ul>
+
+				<button class="hidden" type="button">menu</button>
+			</div>
+		</nav>
+
+        <main class="min-h-screen">
+            <!-- Content Here -->
+        </main>
+        
+		<!-- Footer -->
+		<div class="bg-neutral-600 text-white py-8 min-h-50vh">
+			<div class="w-5/6 mx-auto grid grid-cols-3 gap-4">
+				<section>
+					<h4 class="text-3xl font-bold mb-4">UPTD Puskesmas Lampia</h4>
+					<p class="leading-relaxed mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum pariatur, unde vero dolore est dolorum nihil voluptatibus, deleniti ipsa nostrum harum. Enim, eveniet voluptate? Ut architecto nemo dicta praesentium dolores.</p>
+					<div class="flex gap-4">
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-facebook"></i>
+						</a>
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-instagram"></i>
+						</a>
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-twitter-x"></i>
+						</a>
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-youtube"></i>
+						</a>
+					</div>
+				</section>
+				<section>
+					<div class="aspect-video w-full bg-neutral-500">
+						<!-- Map Here -->
+					</div>
+				</section>
+				<section>
+					<!-- Visit Counter or Metrics Here -->
+				</section>
+			</div>
+		</div>
+		<footer class="bg-neutral-700 py-4 text-center text-white">
+			<span class="opacity-45">Designed by <strong>Codify_Fikhru</strong> & <strong>Nwekoder</strong>.</span>
+		</footer>
+
+		<script src="scripts/main.js"></script>
+	</body>
+</html>

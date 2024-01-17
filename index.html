@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>UPTD Puskesmas Lampia</title>
+		<script src="dist/alpinejs/alpine.js" defer></script>
+		<script>
+			window.__unocss = {
+				theme: {
+					colors: {
+						primary: "#023FAF",
+						secondary: "#141414",
+						accent: "#C09256",
+					},
+				},
+			};
+		</script>
+		<script src="dist/unocss/unocss.js"></script>
+		<link rel="stylesheet" href="dist/unocss/unocss.css" />
+		<link rel="stylesheet" href="styles/main.css" />
+
+		<!-- Bootstrap Icons -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	</head>
+	<body un-cloak>
+		<nav class="bg-white fixed top-0 left-0 w-full h-20 flex items-center shadow-md z-1000" x-data="navbar">
+			<div class="w-11/12 mx-auto flex items-center justify-between">
+				<div class="flex gap-2 items-center">
+					<img src="images/logo-puskesmas.png" alt="Logo" class="h-14">
+					<span class="font-bold text-lg leading-tight text-green-900">UPTD<br/>Puskesmas Lampia</span>
+				</div>
+
+				<ul class="flex items-center gap-2">
+					<template x-for="menu in menus">
+						<li class="relative group flex items-center text-sm">
+							<a :href="menu.link || '#'" x-text="menu.name" class="px-3 py-1.5 transition-colors hover:text-primary"></a>
+
+							<template x-if="menu.child && menu.child.length">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-2 h-2">
+									<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+								</svg>
+							</template>
+
+							<template x-if="menu.child && menu.child.length">
+								<ul
+									class="absolute flex flex-col -bottom-2 bg-neutral-100 translate-y-full items-start text-left right-0 w-52 group-hover:max-h-80vh max-h-0 overflow-x-hidden overflow-y-auto duration-250"
+								>
+									<template x-for="child in menu.child">
+										<li class="w-full">
+											<a class="block w-full px-4 py-2 transition-colors hover:text-primary duration-200" :href="child.link" x-text="child.name"></a>
+										</li>
+									</template>
+								</ul>
+							</template>
+						</li>
+					</template>
+				</ul>
+
+				<button class="hidden" type="button">menu</button>
+			</div>
+		</nav>
+
+		<header class="carousel h-screen relative overflow-x-hidden bg-primary text-white mb-12" x-data="carousel">
+			<template x-for="(item, i) in items">
+				<div :id="`carouselItem${i}`" class="absolute z-0 -left-full w-full h-full top-0">
+					<img
+						:src="item.image"
+						:alt="`Background ${item.title}`"
+						class="absolute z-1 left-1/2 top-1/2 -translate-1/2 w-full h-full brightness-50 object-cover object-center"
+					/>
+					<p class="text-xl font-semibold absolute top-40% left-1/2 -translate-x-1/2 -translate-y-1/3 z-2" x-text="item.subtitle_top"></p>
+					<h1 class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-center z-2 w-5/6" x-text="item.title"></h1>
+					<p x-text="item.subtitle_bottom" class="absolute text-lg top-2/3 left-1/2 -translate-x-1/2 z-2 -translate-y-1/2"></p>
+				</div>
+			</template>
+		</header>
+
+		<section class="w-5/6 mx-auto mb-8">
+			<div class="grid grid-cols-3 gap-4">
+				<div class="w-full aspect-3/4 rounded-md bg-primary"></div>
+
+				<div class="col-span-2">
+					<h2 class="text-4xl font-bold mb-4">Sekilas Tentang Kami</h2>
+					<p class="max-w-2xl leading-relaxed mb-4">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, quas? Eius, illo qui, doloribus assumenda dicta facere dolorum vero expedita nobis sed
+						aliquam reprehenderit sint, at animi sapiente commodi odit.
+					</p>
+					<p class="max-w-2xl leading-relaxed mb-4">
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis id animi quasi. Sapiente sunt quibusdam aperiam est iure molestias incidunt vel officiis
+						quam, quae vitae aliquam libero totam, mollitia facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente voluptates ratione ipsam.
+						Autem corrupti, quae illum et assumenda tempora. Natus, laborum! Omnis dignissimos expedita voluptatem accusamus amet error natus.
+					</p>
+					<p class="max-w-2xl leading-relaxed mb-4">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla ab quia placeat sit quas, repellendus corrupti soluta cupiditate autem cumque, minima
+						culpa facilis mollitia quos dolore dolor fuga illum!
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="mb-8 py-4 bg-neutral-100">
+			<script>
+				const layananSection = () => ({
+					layanan: [
+						{
+							logo: "images/logo-kemenkes.png",
+							name: "Kementrian Kesehatan"
+						},
+						{
+							logo: "images/logo-kab-lutim.png",
+							name: "Kabupaten Luwu Timur"
+						},
+						{
+							logo: "images/logo_lutim_inspiring.png",
+							name: "Luwu Timur Inspiring"
+						},
+						{
+							logo: "images/logo-germas.png",
+							name: "Gerakan Masyarakat Hidup Sehat"
+						},
+					]
+				})
+			</script>
+
+			<div class="w-5/6 mx-auto">
+				<h2 class="text-4xl font-bold mb-10 uppercase text-center">Pemerintah Kabupaten Luwu Timur</h2>
+
+				<div class="w-5/6 mx-auto grid grid-cols-4 gap-6">
+					<template x-data="layananSection" x-for="i in layanan">
+						<div class="flex flex-col">
+							<div class="w-full aspect-square rounded-md mb-4 flex items-center justify-center">
+								<img :src="i.logo" :alt="`Logo ${i.name}`" class="w-2/3 object-contain aspect-square">
+							</div>
+							<h5 class="text-center font-lg font-semibold" x-text="i.name"></h5>
+						</div>
+					</template>
+				</div>
+			</div>
+		</section>
+
+		<section class="py-4 w-5/6 mx-auto">
+			<h2 class="text-4xl font-bold mb-10 uppercase text-left">Informasi Terkini</h2>
+
+			<div class="grid grid-cols-3 gap-4 mb-12">
+				<template x-data="{artikel: ['Judul', 'Judul', 'Judul', 'Judul', 'Judul']}" x-for="i in artikel">
+					<div class="flex flex-col">
+						<div class="w-full aspect-video bg-primary rounded-md mb-2"></div>
+
+						<span class="text-sm text-neutral-400">Diupload oleh <strong>Admin</strong> pada <strong>15 menit yang lalu</strong></span>
+						<h5 class="text-2xl font-bold mb-4" x-text="i"></h5>
+						<p>
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa labore ipsam voluptatum quod repudiandae dolorem incidunt sit, aut vel officia, corrupti
+							dicta nisi dignissimos cumque odio eligendi ab esse assumenda.
+						</p>
+					</div>
+				</template>
+			</div>
+
+			<a href="#" class="bg-blue-700 rounded-md px-3 py-1.5 mx-auto block w-fit text-white hover:bg-blue-600 duration-200">Artikel Lainnya</a>
+		</section>
+
+		<section class="mb-8 py-4 bg-neutral-100">
+
+			<div class="w-5/6 mx-auto">
+				<h2 class="text-4xl font-bold mb-10 uppercase text-center">Aplikasi Layanan Publik</h2>
+
+				<div class="w-4/5 mx-auto grid grid-cols-4 gap-8">
+					<template x-data="{layanan: ['Kementrian Kesehatan','Kementrian Kesehatan','Kementrian Kesehatan','Kementrian Kesehatan']}" x-for="i in layanan">
+						<div class="flex flex-col">
+							<div class="w-full aspect-square rounded-md mb-4"></div>
+							<h5 class="text-center font-lg" x-text="i"></h5>
+						</div>
+					</template>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<div class="bg-neutral-600 text-white py-8 min-h-50vh">
+			<div class="w-5/6 mx-auto grid grid-cols-3 gap-4">
+				<section>
+					<h4 class="text-3xl font-bold mb-4">UPTD Puskesmas Lampia</h4>
+					<p class="leading-relaxed mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum pariatur, unde vero dolore est dolorum nihil voluptatibus, deleniti ipsa nostrum harum. Enim, eveniet voluptate? Ut architecto nemo dicta praesentium dolores.</p>
+					<div class="flex gap-4">
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-facebook"></i>
+						</a>
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-instagram"></i>
+						</a>
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-twitter-x"></i>
+						</a>
+						<a href="#" class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md">
+							<i class="bi bi-youtube"></i>
+						</a>
+					</div>
+				</section>
+				<section>
+					<div class="aspect-video w-full bg-neutral-500">
+						<!-- Map Here -->
+					</div>
+				</section>
+				<section>
+					<!-- Visit Counter or Metrics Here -->
+				</section>
+			</div>
+		</div>
+		<footer class="bg-neutral-700 py-4 text-center text-white">
+			<span class="opacity-45">Designed by <strong>Codify_Fikhru</strong> & <strong>Nwekoder</strong>.</span>
+		</footer>
+
+		<script src="scripts/main.js"></script>
+	</body>
+</html>
