@@ -118,7 +118,7 @@ document.addEventListener("alpine:init", () => {
 				link: "gallery.html",
 			},
 			{
-				name: "UKM ESENSIAL",
+				name: "UKM Esensial",
 				child: [
 					{
 						name: "Pelayanan Promosi Kesehatan (PROMKES)",
@@ -143,7 +143,7 @@ document.addEventListener("alpine:init", () => {
 				],
 			},
 			{
-				name: "UKM PENGEMBANGAN",
+				name: "UKM Pengembangan",
 				child: [
 					{
 						name: "Pelayanan Kesehatan Jiwa",
@@ -176,7 +176,7 @@ document.addEventListener("alpine:init", () => {
 				],
 			},
 			{
-				name: "PUSTU",
+				name: "Pustu",
 				child: [
 					{
 						name: "Pustu Laskap",
