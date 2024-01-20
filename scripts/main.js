@@ -215,12 +215,6 @@ document.addEventListener("alpine:init", () => {
 		selected: 0,
 		items: [
 			{
-				subtitle_top: "Selamat Datang di Website",
-				title: "UPTD Puskesmas Lampia",
-				subtitle_bottom: "",
-				image: "images/bg.JPG",
-			},
-			{
 				subtitle_top: "",
 				title: "Staff UPTD Puskesmas Lampia",
 				subtitle_bottom: "Ramah, Tanggung Jawab, Profesional",
@@ -229,7 +223,7 @@ document.addEventListener("alpine:init", () => {
 			{
 				subtitle_top: "Selamat Datang di",
 				title: "UPTD Puskesmas Lampia",
-				subtitle_bottom: "Website ini masih prototype",
+				subtitle_bottom: "Kec. Malili, Kab. Luwu Timur, Prov. Sulawesi Selatan",
 				image: "images/bg2.jpeg",
 			},
 		],

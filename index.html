@@ -116,17 +116,17 @@
 				<div class="lg:col-span-2">
 					<h2 class="text-4xl font-bold mb-4">Sekilas Tentang Kami</h2>
 					<p class="text-justify max-w-md mx-auto lg:mx-0 lg:max-w-2xl leading-relaxed mb-4">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, quas? Eius, illo qui, doloribus assumenda dicta facere dolorum vero expedita nobis sed
-						aliquam reprehenderit sint, at animi sapiente commodi odit.
+						<strong>UPTD Puskesmas Lampia</strong> adalah salah satu Puskesmas yang berada di Kabupaten Luwu Timur, Provinsi Sulawesi Selatan. Puskesmas ini terletak di
+						kecamatan Lampia sekitar 100 km dari ibu kota Kabupaten Malili.
 					</p>
 					<p class="text-justify max-w-md mx-auto lg:mx-0 lg:max-w-2xl leading-relaxed mb-4">
-						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis id animi quasi. Sapiente sunt quibusdam aperiam est iure molestias incidunt vel officiis
-						quam, quae vitae aliquam libero totam, mollitia facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente voluptates ratione ipsam.
-						Autem corrupti, quae illum et assumenda tempora. Natus, laborum! Omnis dignissimos expedita voluptatem accusamus amet error natus.
+						<strong>UPTD Puskesmas Lampia</strong> memiliki wilayah kerja seluas 172,5 km dengan jumlah penduduk sekitar 12.000 jiwa. Puskesmas ini melayani Masyarakat
+						di kecamatan Lampia, yaitu Desa Lampia, Desa Labuang, Desa Labuang Barat, Desa Labuang Timur, Desa Labuang Jaya, Desa Lampia Jaya, Desa Lampia Baru, Desa
+						Lampia Selatan, dan Desa lampia Utara.
 					</p>
 					<p class="text-justify max-w-md mx-auto lg:mx-0 lg:max-w-2xl leading-relaxed mb-4">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam nulla ab quia placeat sit quas, repellendus corrupti soluta cupiditate autem cumque, minima
-						culpa facilis mollitia quos dolore dolor fuga illum!
+						<strong>UPTD Puskesmas Lampia</strong> terus berupaya meningkatkan kualitas pelyanan kesehatannya dengan meningkatkan kompetensi tenaga kesehatannya dengan
+						dengan meningkatkan kompetensi tenaga kesehatan, meningkatkan sarana dan prasarana, dan meningkatkan peran serta Masyarakat.
 					</p>
 				</div>
 			</div>
@@ -199,11 +199,13 @@
 			<div class="w-11/12 lg:w-5/6 mx-auto">
 				<h2 class="text-4xl font-bold mb-10 uppercase text-center">Aplikasi Layanan Publik</h2>
 
-				<div class="w-5/6 lg:w-4/5 mx-auto grid grid-cols-4 gap-8">
-					<template x-data="{layanan: ['Kementrian Kesehatan','Kementrian Kesehatan','Kementrian Kesehatan','Kementrian Kesehatan']}" x-for="i in layanan">
+				<div class="w-5/6 mx-auto grid grid-cols-4 gap-8">
+					<template
+						x-data="{layanan: ['PPID Kabupaten Luwu Timur','PPDB Kabupaten Luwu Timur','Perizinan Terpadu Satu Pintu','JDIH Kabupaten Luwu Timur']}"
+						x-for="i in layanan"
+					>
 						<div class="flex flex-col">
-							<div class="w-full aspect-square rounded-md mb-4"></div>
-							<h5 class="text-center font-lg" x-text="i"></h5>
+							<h5 class="text-center font-lg font-medium" x-text="i"></h5>
 						</div>
 					</template>
 				</div>
@@ -216,9 +218,27 @@
 				<section>
 					<h4 class="text-3xl font-bold mb-4">UPTD Puskesmas Lampia</h4>
 					<p class="leading-relaxed">Alamat : Jalan Poros Sul-tra Desa Harapan, Kec. Malili, Kab. Luwu Timur, Prov. Sulawesi Selatan</p>
+				</section>
+				<section>
+					<div class="aspect-video w-full bg-neutral-500">
+						<!-- Map Here -->
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.08331920547312!2d121.10747422798279!3d-2.717022921365779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d90f734013f45e5%3A0x5961bdc105f1a8d1!2sPUSKESMAS%20Lampia!5e0!3m2!1sid!2sid!4v1705672200286!5m2!1sid!2sid"
+							width="100%"
+							height="300"
+							style="border: 0"
+							allowfullscreen=""
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+						></iframe>
+					</div>
+				</section>
+				<section class="text-right">
+					<!-- Visit Counter or Metrics Here -->
+					<h4 class="text-3xl font-bold mb-4">Hubungi Kami</h4>
 					<p class="leading-relaxed">Email : uptd.puskesmaslampia@gmail.com</p>
 					<p class="leading-relaxed mb-6">No.Hp : 085213204213</p>
-					<div class="flex gap-4">
+					<div class="flex justify-end gap-4">
 						<a
 							href="https://www.facebook.com/profile.php?id=100073460290960&mibextid=ZbWKwL"
 							class="aspect-square bg-neutral-700 flex items-center justify-center px-3 text-neutral-400 transition-colors hover:text-neutral-100 rounded-md"
@@ -238,23 +258,6 @@
 							<i class="bi bi-youtube"></i>
 						</a>
 					</div>
-				</section>
-				<section>
-					<div class="aspect-video w-full bg-neutral-500">
-						<!-- Map Here -->
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d249.08331920547312!2d121.10747422798279!3d-2.717022921365779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d90f734013f45e5%3A0x5961bdc105f1a8d1!2sPUSKESMAS%20Lampia!5e0!3m2!1sid!2sid!4v1705672200286!5m2!1sid!2sid"
-							width="400"
-							height="300"
-							style="border: 0"
-							allowfullscreen=""
-							loading="lazy"
-							referrerpolicy="no-referrer-when-downgrade"
-						></iframe>
-					</div>
-				</section>
-				<section>
-					<!-- Visit Counter or Metrics Here -->
 				</section>
 			</div>
 		</div>
